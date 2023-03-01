@@ -6,6 +6,9 @@ jobs:
       - image: cimg/node:18.10.0
     steps:
       - checkout
+      - run:
+          name: Build
+          command: docker build -t docker-react -f Dockerfile.dev .
       #- restore_cache:
       #    key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
@@ -13,4 +16,4 @@ jobs:
           command: npm install
       - run:
           name: Run tests
-          command: npm run test
+          command: docker run docker-react npm run test -- -- coverage
