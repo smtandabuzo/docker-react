@@ -19,4 +19,4 @@ jobs:
           command: npm install
       - run:
           name: Run tests
-          command: docker run docker-react npm run test -- -- coverage
+          command: docker run docker-react npm run test
