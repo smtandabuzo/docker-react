@@ -6,9 +6,9 @@ jobs:
       - image: cimg/node:18.10.0
     steps:
       - checkout
-      - run:
-          name: Start Docker
-          command: systemctl start docker
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
       - run:
           name: Build
           command: docker build -t docker-react -f Dockerfile.dev .
